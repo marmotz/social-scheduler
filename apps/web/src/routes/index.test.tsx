@@ -11,6 +11,6 @@ describe('HomePage', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(await screen.findByText('Sonskay')).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Sonskay' })).toBeInTheDocument();
   });
 });

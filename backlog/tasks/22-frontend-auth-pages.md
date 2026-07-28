@@ -1,6 +1,6 @@
 # Frontend — pages login / register
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : front
 **Issue** : [marmotz/sonskay#22](https://github.com/marmotz/sonskay/issues/22)
 

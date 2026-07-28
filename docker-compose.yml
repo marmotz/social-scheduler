@@ -7,11 +7,11 @@ services:
       POSTGRES_PASSWORD: sonskay
       POSTGRES_DB: sonskay
     ports:
-      - "5436:5432"
+      - '5436:5432'
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U sonskay"]
+      test: ['CMD-SHELL', 'pg_isready -U sonskay']
       interval: 5s
       timeout: 5s
       retries: 10
@@ -24,12 +24,12 @@ services:
       MINIO_ROOT_USER: sonskay
       MINIO_ROOT_PASSWORD: sonskay-minio
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - '9000:9000'
+      - '9001:9001'
     volumes:
       - minio-data:/data
     healthcheck:
-      test: ["CMD", "mc", "ready", "local"]
+      test: ['CMD', 'mc', 'ready', 'local']
       interval: 5s
       timeout: 5s
       retries: 10
@@ -43,8 +43,13 @@ services:
       DATABASE_URL: postgresql://sonskay:sonskay@postgres:5432/sonskay?schema=public
       PORT: 3000
       SONSKAY_ENCRYPTION_KEY: ${SONSKAY_ENCRYPTION_KEY:-}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-}
+      JWT_ACCESS_EXPIRES_IN: ${JWT_ACCESS_EXPIRES_IN:-15m}
+      JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN:-7d}
+      WEB_URL: ${WEB_URL:-http://localhost:5173}
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       postgres:
         condition: service_healthy
@@ -59,7 +64,7 @@ services:
     environment:
       VITE_API_URL: http://localhost:3000
     ports:
-      - "5173:5173"
+      - '5173:5173'
     depends_on:
       - api
 

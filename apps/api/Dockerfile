@@ -8,6 +8,7 @@ RUN bun install
 
 COPY apps/api apps/api
 COPY packages/shared packages/shared
+RUN bun --cwd=packages/shared run build
 
 WORKDIR /repo/apps/api
 # Dummy value: `prisma generate` only reads the schema, it never connects to

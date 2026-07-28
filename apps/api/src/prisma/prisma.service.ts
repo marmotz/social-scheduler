@@ -1,6 +1,7 @@
-import { PrismaPg } from '@prisma/adapter-pg';
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../../generated/prisma/client.js';
+import { AppConfigService } from '../config/app-config.service.js';
 
 /**
  * Wraps PrismaClient instead of extending it: Prisma 7's generated client is a
@@ -9,9 +10,13 @@ import { PrismaClient } from '../../generated/prisma/client.js';
  */
 @Injectable()
 export class PrismaService implements OnModuleInit, OnModuleDestroy {
-  readonly client = new PrismaClient({
-    adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }),
-  });
+  readonly client: PrismaClient;
+
+  constructor(config: AppConfigService) {
+    this.client = new PrismaClient({
+      adapter: new PrismaPg({ connectionString: config.databaseUrl }),
+    });
+  }
 
   async onModuleInit() {
     await this.client.$connect();
