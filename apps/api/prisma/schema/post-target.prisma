@@ -1,0 +1,37 @@
+enum PostTargetStatus {
+  PENDING
+  PUBLISHING
+  SUCCESS
+  FAILED
+}
+
+model PostTarget {
+  id              String           @id @default(uuid())
+  postId          String
+  socialAccountId String
+  status          PostTargetStatus @default(PENDING)
+  errorMessage    String?
+  publishedAt     DateTime?
+
+  post          Post             @relation(fields: [postId], references: [id], onDelete: Cascade)
+  socialAccount SocialAccount    @relation(fields: [socialAccountId], references: [id], onDelete: Cascade)
+  items         PostTargetItem[]
+
+  @@index([postId])
+  @@index([socialAccountId])
+}
+
+model PostTargetItem {
+  id           String           @id @default(uuid())
+  postTargetId String
+  postItemId   String
+  externalId   String?
+  status       PostTargetStatus @default(PENDING)
+  errorMessage String?
+
+  postTarget PostTarget @relation(fields: [postTargetId], references: [id], onDelete: Cascade)
+  postItem   PostItem   @relation(fields: [postItemId], references: [id], onDelete: Cascade)
+
+  @@index([postTargetId])
+  @@index([postItemId])
+}

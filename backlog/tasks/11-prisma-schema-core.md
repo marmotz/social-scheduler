@@ -1,6 +1,6 @@
 # Backend — schéma Prisma initial (User, SocialAccount, Post, PostItem, Media, PostTarget, PostTargetItem)
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : backend
 **Issue** : [marmotz/sonskay#11](https://github.com/marmotz/sonskay/issues/11)
 

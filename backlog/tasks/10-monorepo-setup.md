@@ -1,6 +1,6 @@
 # Setup — squelette monorepo Bun (apps/api, apps/web, packages/shared) + docker-compose
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : CI / infra
 **Issue** : [marmotz/sonskay#10](https://github.com/marmotz/sonskay/issues/10)
 
