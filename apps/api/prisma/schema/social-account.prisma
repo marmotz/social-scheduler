@@ -1,0 +1,27 @@
+enum Network {
+  TWITTER
+  BLUESKY
+}
+
+enum SocialAccountStatus {
+  CONNECTED
+  EXPIRED
+  REVOKED
+}
+
+model SocialAccount {
+  id           String              @id @default(uuid())
+  userId       String
+  network      Network
+  handle       String
+  accessToken  String
+  refreshToken String?
+  status       SocialAccountStatus @default(CONNECTED)
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postTargets PostTarget[]
+
+  @@index([userId])
+}

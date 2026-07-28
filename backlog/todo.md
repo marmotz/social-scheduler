@@ -6,9 +6,9 @@
 
 | Fait | Issue                                               | Tâche                                                                     | Description                                   |
 |------|-----------------------------------------------------|---------------------------------------------------------------------------|-----------------------------------------------|
-| [ ]  | [#10](https://github.com/marmotz/sonskay/issues/10) | [10-monorepo-setup](tasks/10-monorepo-setup.md)                           | Setup monorepo Bun + docker-compose           |
-| [ ]  | [#11](https://github.com/marmotz/sonskay/issues/11) | [11-prisma-schema-core](tasks/11-prisma-schema-core.md)                   | Schéma Prisma initial                         |
-| [ ]  | [#12](https://github.com/marmotz/sonskay/issues/12) | [12-network-capabilities-shared](tasks/12-network-capabilities-shared.md) | NetworkCapabilities / NetworkAdapter (shared) |
+| [x]  | [#10](https://github.com/marmotz/sonskay/issues/10) | [10-monorepo-setup](tasks/10-monorepo-setup.md)                           | Setup monorepo Bun + docker-compose           |
+| [x]  | [#11](https://github.com/marmotz/sonskay/issues/11) | [11-prisma-schema-core](tasks/11-prisma-schema-core.md)                   | Schéma Prisma initial                         |
+| [x]  | [#12](https://github.com/marmotz/sonskay/issues/12) | [12-network-capabilities-shared](tasks/12-network-capabilities-shared.md) | NetworkCapabilities / NetworkAdapter (shared) |
 
 ### Backend
 

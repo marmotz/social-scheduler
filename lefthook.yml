@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: prettier
+      glob: '*.{js,jsx,ts,tsx,json,md,css,scss,html,yml,yaml}'
+      run: bunx prettier --write {staged_files}
+      stage_fixed: true

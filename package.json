@@ -1,0 +1,28 @@
+{
+  "name": "sonskay",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "reset": "bun clean && bun setup",
+    "clean": "rm -rf node_modules dist && bun --workspaces clean",
+    "setup": "bun i",
+    "prepare": "lefthook install",
+    "dev:api": "bun --filter @sonskay/api dev",
+    "dev:web": "bun --filter @sonskay/web dev",
+    "build": "bun --filter '*' build",
+    "typecheck": "bun --filter '*' typecheck",
+    "test": "bun --filter '*' test",
+    "wb": "bun --cwd=apps/api",
+    "wf": "bun --cwd=apps/web",
+    "ws": "bun --cwd=packages/shared"
+  },
+  "devDependencies": {
+    "lefthook": "^2.1.10",
+    "prettier": "^3.9.6",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "typescript": "^6.0.3"
+  }
+}

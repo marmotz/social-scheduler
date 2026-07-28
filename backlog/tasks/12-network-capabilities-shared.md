@@ -1,6 +1,6 @@
 # Shared — type NetworkCapabilities + interface NetworkAdapter
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : backend (shared)
 **Issue** : [marmotz/sonskay#12](https://github.com/marmotz/sonskay/issues/12)
 
