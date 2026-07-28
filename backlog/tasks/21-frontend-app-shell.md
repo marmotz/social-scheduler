@@ -1,6 +1,6 @@
 # Frontend — socle app (Vite, TanStack Router SPA, shadcn/ui, Zustand, tRPC client)
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : front
 **Issue** : [marmotz/sonskay#21](https://github.com/marmotz/sonskay/issues/21)
 

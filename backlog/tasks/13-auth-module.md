@@ -1,6 +1,6 @@
 # Backend — module auth (inscription/connexion, Passport + JWT)
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : backend
 **Issue** : [marmotz/sonskay#13](https://github.com/marmotz/sonskay/issues/13)
 

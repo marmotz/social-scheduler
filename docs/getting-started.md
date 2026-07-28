@@ -44,7 +44,7 @@ bun run prisma:migrate
 Dans deux terminaux séparés, depuis la racine du repo :
 
 ```bash
-bun run dev:api   # NestJS, http://localhost:3000
+bun run dev:api   # NestJS, http://localhost:3003
 bun run dev:web   # Vite, http://localhost:5173
 ```
 
@@ -54,7 +54,7 @@ bun run dev:web   # Vite, http://localhost:5173
 docker compose up
 ```
 
-Démarre `postgres`, `minio`, `api` (http://localhost:3000) et `web`
+Démarre `postgres`, `minio`, `api` (http://localhost:3003) et `web`
 (http://localhost:5173) en une seule commande.
 
 ## Tests
