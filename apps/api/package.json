@@ -19,7 +19,8 @@
     "prisma:migrate": "bun x prisma migrate dev",
     "db:setup": "bun run db:reset && bun run db:seed",
     "db:reset": "bun x prisma migrate reset --force",
-    "db:seed": "echo 'No seed yet' #bun seeds/seeds.ts"
+    "db:seed": "echo 'No seed yet' #bun seeds/seeds.ts",
+    "generate:encryption-key": "bun run scripts/generate-encryption-key.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.28",

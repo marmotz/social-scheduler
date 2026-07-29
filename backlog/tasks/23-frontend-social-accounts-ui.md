@@ -1,6 +1,6 @@
 # Frontend — gestion des comptes réseaux connectés
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : front
 **Issue** : [marmotz/sonskay#23](https://github.com/marmotz/sonskay/issues/23)
 

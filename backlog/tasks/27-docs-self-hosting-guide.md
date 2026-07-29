@@ -21,3 +21,11 @@ Référence : [../../docs/documentation-strategy.md](../../docs/documentation-st
 
 [14-oauth-token-encryption.md](14-oauth-token-encryption.md),
 [10-monorepo-setup.md](10-monorepo-setup.md).
+
+## Note
+
+Les points 2 et 3 ont déjà un contenu provisoire dans
+[../../docs/getting-started.md](../../docs/getting-started.md) (sections « Clé de
+chiffrement des tokens OAuth » et « Comptes réseaux (X/Twitter, Bluesky) »), écrit au
+fil de l'implémentation de #14/#15/#16 faute de guide d'auto-hébergement dédié. À
+migrer/étoffer ici plutôt qu'à réécrire de zéro.

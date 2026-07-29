@@ -4,8 +4,17 @@ import { indexRoute } from './routes/index.js';
 import { loginRoute } from './routes/login.js';
 import { registerRoute } from './routes/register.js';
 import { rootRoute } from './routes/root.js';
+import { socialAccountsCallbackRoute } from './routes/social-accounts.callback.js';
+import { socialAccountsRoute } from './routes/social-accounts.js';
 
-const routeTree = rootRoute.addChildren([indexRoute, loginRoute, registerRoute, dashboardRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  loginRoute,
+  registerRoute,
+  dashboardRoute,
+  socialAccountsRoute,
+  socialAccountsCallbackRoute,
+]);
 
 export const router = createRouter({ routeTree });
 

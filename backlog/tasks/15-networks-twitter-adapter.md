@@ -1,6 +1,6 @@
 # Backend — module networks/twitter (adapter X/Twitter)
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : backend
 **Issue** : [marmotz/sonskay#15](https://github.com/marmotz/sonskay/issues/15)
 
@@ -9,7 +9,7 @@ Référence : [../features/mvp/technical.md §Interface NetworkAdapter](../featu
 ## À faire
 
 1. Module NestJS `networks/twitter` implémentant `NetworkAdapter`.
-2. `capabilities` : `maxChars: 280`, `maxImages` (à vérifier auprès de l'API X), 
+2. `capabilities` : `maxChars: 280`, `maxImages` (à vérifier auprès de l'API X),
    `supportsThread: true`, `supportsMentions: false` (hors MVP).
 3. `connect` : flux OAuth 2 X, stockage du `SocialAccount` (tokens chiffrés via la
    tâche de chiffrement).
@@ -22,3 +22,10 @@ Référence : [../features/mvp/technical.md §Interface NetworkAdapter](../featu
 
 [12-network-capabilities-shared.md](12-network-capabilities-shared.md),
 [14-oauth-token-encryption.md](14-oauth-token-encryption.md).
+
+## Note
+
+L'upload des images (point 4) est reporté à
+[18-media-storage-module](18-media-storage-module.md) : `NetworkAdapterPostItem`
+n'a pas encore de champ image et il n'existe pas de `StorageDriver` pour les
+récupérer. À reprendre dans `TwitterAdapter.publish` en même temps que #18.

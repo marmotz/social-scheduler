@@ -20,3 +20,13 @@ Référence : [../features/mvp/technical.md §Stockage des médias](../features/
 ## Dépendances
 
 [11-prisma-schema-core.md](11-prisma-schema-core.md).
+
+## Note
+
+L'upload des images vers X et Bluesky lors de la publication a été reporté ici depuis
+[15-networks-twitter-adapter](15-networks-twitter-adapter.md) et
+[16-networks-bluesky-adapter](16-networks-bluesky-adapter.md) : une fois `Media` et
+`StorageDriver` en place, ajouter un champ image à `NetworkAdapterPostItem` (shared) et
+implémenter l'upload dans `TwitterAdapter.publish` (endpoint `/2/media/upload` puis
+`media.media_ids` sur le tweet) et `BlueskyAdapter.publish` (`com.atproto.repo.uploadBlob`
+puis `embed` sur le post).

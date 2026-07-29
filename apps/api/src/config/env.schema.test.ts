@@ -4,7 +4,7 @@ import { validateEnv } from './env.schema.js';
 function validEnv(overrides: Record<string, unknown> = {}) {
   return {
     DATABASE_URL: 'postgresql://user:pass@localhost:5432/db',
-    SONSKAY_ENCRYPTION_KEY: 'secret-key',
+    SONSKAY_ENCRYPTION_KEY: 'a'.repeat(64),
     JWT_ACCESS_SECRET: 'access-secret',
     JWT_REFRESH_SECRET: 'refresh-secret',
     ...overrides,
@@ -42,5 +42,11 @@ describe('validateEnv', () => {
 
   it('rejects an unknown NODE_ENV value', () => {
     expect(() => validateEnv(validEnv({ NODE_ENV: 'staging' }))).toThrow();
+  });
+
+  it('rejects an encryption key that is not a 64-character hex string', () => {
+    expect(() => validateEnv(validEnv({ SONSKAY_ENCRYPTION_KEY: 'too-short' }))).toThrow(
+      /Invalid environment variables/
+    );
   });
 });
