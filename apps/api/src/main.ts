@@ -9,6 +9,8 @@ import 'reflect-metadata';
 import { AppModule } from './app.module.js';
 import { AuthService } from './auth/auth.service.js';
 import { AppConfigService } from './config/app-config.service.js';
+import { MediaService } from './media/media.service.js';
+import { PostsService } from './posts/posts.service.js';
 import { AppLoggerExceptionFilter } from './shared/app-logger/app-logger.exception-filter.js';
 import { AppLoggerService } from './shared/app-logger/app-logger.service.js';
 import { IpMiddleware } from './shared/middlewares/ip.middleware.js';
@@ -45,6 +47,8 @@ async function bootstrap() {
 
   const authService = app.get(AuthService);
   const socialAccountsService = app.get(SocialAccountsService);
+  const mediaService = app.get(MediaService);
+  const postsService = app.get(PostsService);
   const appLoggerService = app.get(AppLoggerService);
 
   // /trpc is mounted as raw Express middleware (see below), so it never goes through
@@ -67,7 +71,7 @@ async function bootstrap() {
   app.use(
     '/trpc',
     createExpressMiddleware({
-      router: createAppRouter(authService, config, socialAccountsService),
+      router: createAppRouter(authService, config, socialAccountsService, mediaService, postsService),
       createContext: createContextFactory(authService),
     })
   );

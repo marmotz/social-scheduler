@@ -17,6 +17,12 @@ export const envSchema = z.object({
   TWITTER_API_BASE_URL: z.url().default('https://api.twitter.com'),
   TWITTER_AUTHORIZE_BASE_URL: z.url().default('https://twitter.com'),
   BLUESKY_SERVICE_URL: z.url().default('https://bsky.social'),
+  MINIO_ENDPOINT: z.string().min(1).default('localhost'),
+  MINIO_PORT: z.coerce.number().int().positive().default(9000),
+  MINIO_USE_SSL: z.stringbool().default(false),
+  MINIO_ACCESS_KEY: z.string().min(1),
+  MINIO_SECRET_KEY: z.string().min(1),
+  MINIO_BUCKET: z.string().min(1).default('sonskay-media'),
 });
 
 export type Env = z.infer<typeof envSchema>;

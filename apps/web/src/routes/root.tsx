@@ -42,6 +42,12 @@ function RootLayout() {
               >
                 Social accounts
               </Link>
+              <Link
+                to="/posts/compose"
+                className="text-sm"
+              >
+                New post
+              </Link>
               <span className="text-sm text-muted-foreground">{user.email}</span>
               <Button
                 variant="outline"

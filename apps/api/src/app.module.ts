@@ -5,6 +5,8 @@ import { AppService } from './app.service.js';
 import { AuthModule } from './auth/auth.module.js';
 import { AppConfigModule } from './config/app-config.module.js';
 import { EncryptionModule } from './crypto/encryption.module.js';
+import { MediaModule } from './media/media.module.js';
+import { PostsModule } from './posts/posts.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 import { AppLoggerInterceptor } from './shared/app-logger/app-logger.interceptor.js';
 import { AppLoggerService } from './shared/app-logger/app-logger.service.js';
@@ -14,7 +16,15 @@ import { SessionMiddleware } from './shared/middlewares/session.middleware.js';
 import { SocialAccountsModule } from './social-accounts/social-accounts.module.js';
 
 @Module({
-  imports: [AppConfigModule, EncryptionModule, PrismaModule, AuthModule, SocialAccountsModule],
+  imports: [
+    AppConfigModule,
+    EncryptionModule,
+    PrismaModule,
+    AuthModule,
+    SocialAccountsModule,
+    MediaModule,
+    PostsModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,
