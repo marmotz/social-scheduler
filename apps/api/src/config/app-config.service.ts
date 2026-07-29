@@ -67,4 +67,28 @@ export class AppConfigService {
   get blueskyServiceUrl(): string {
     return this.configService.get('BLUESKY_SERVICE_URL', { infer: true });
   }
+
+  get minioEndpoint(): string {
+    return this.configService.get('MINIO_ENDPOINT', { infer: true });
+  }
+
+  get minioPort(): number {
+    return this.configService.get('MINIO_PORT', { infer: true });
+  }
+
+  get minioUseSsl(): boolean {
+    return this.configService.get('MINIO_USE_SSL', { infer: true });
+  }
+
+  get minioAccessKey(): string {
+    return this.configService.get('MINIO_ACCESS_KEY', { infer: true });
+  }
+
+  get minioSecretKey(): string {
+    return this.configService.get('MINIO_SECRET_KEY', { infer: true });
+  }
+
+  get minioBucket(): string {
+    return this.configService.get('MINIO_BUCKET', { infer: true });
+  }
 }

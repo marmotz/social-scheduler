@@ -14,16 +14,27 @@ interface MockTrpcResponse {
  * directly silently breaks `mutationOptions()`.
  */
 export function mockTrpcFetch(handlers: Record<string, () => MockTrpcResponse>) {
-  const fetchMock = vi.fn(async (url: string | URL) => {
+  const fetchMock = vi.fn(async (url: string | URL, _options?: RequestInit) => {
     const urlStr = url.toString();
-    const path = Object.keys(handlers).find((candidate) => urlStr.includes(`/trpc/${candidate}`));
-    if (!path) {
-      throw new Error(`mockTrpcFetch: no handler registered for ${urlStr}`);
+    const match = /\/trpc\/([^?]+)/.exec(urlStr);
+    if (!match) {
+      throw new Error(`mockTrpcFetch: could not parse a tRPC path from ${urlStr}`);
     }
 
-    const { status, entry } = handlers[path]!();
-    return new Response(JSON.stringify([entry]), {
-      status,
+    // httpBatchLink merges same-tick queries into a single comma-separated path
+    // (e.g. `/trpc/socialAccounts.listAccounts,posts.listPosts`), so each segment
+    // needs its own handler and its own entry in the response array, in order.
+    const paths = decodeURIComponent(match[1]).split(',');
+    const responses = paths.map((path) => {
+      const handler = handlers[path];
+      if (!handler) {
+        throw new Error(`mockTrpcFetch: no handler registered for ${path}`);
+      }
+      return handler();
+    });
+
+    return new Response(JSON.stringify(responses.map(({ entry }) => entry)), {
+      status: responses[0]?.status ?? 200,
       headers: { 'content-type': 'application/json' },
     });
   });

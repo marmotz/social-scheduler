@@ -7,6 +7,8 @@ function validEnv(overrides: Record<string, unknown> = {}) {
     SONSKAY_ENCRYPTION_KEY: 'a'.repeat(64),
     JWT_ACCESS_SECRET: 'access-secret',
     JWT_REFRESH_SECRET: 'refresh-secret',
+    MINIO_ACCESS_KEY: 'minio-access-key',
+    MINIO_SECRET_KEY: 'minio-secret-key',
     ...overrides,
   };
 }
@@ -21,6 +23,10 @@ describe('validateEnv', () => {
       JWT_ACCESS_EXPIRES_IN: '15m',
       JWT_REFRESH_EXPIRES_IN: '7d',
       WEB_URL: 'http://localhost:5173',
+      MINIO_ENDPOINT: 'localhost',
+      MINIO_PORT: 9000,
+      MINIO_USE_SSL: false,
+      MINIO_BUCKET: 'sonskay-media',
     });
   });
 

@@ -8,18 +8,11 @@ import type {
   NetworkAdapterPostTargetItem,
   NetworkAdapterRefreshResult,
   NetworkAdapterUser,
-  NetworkCapabilities,
   PublishError,
 } from '@sonskay/shared';
+import { NETWORK_CAPABILITIES } from '@sonskay/shared';
 import { AppConfigService } from '../../config/app-config.service.js';
 import { BlueskyApiClient, BlueskyApiError, type BlueskyPostRef } from './bluesky-api-client.js';
-
-const CAPABILITIES: NetworkCapabilities = {
-  maxChars: 300,
-  maxImages: 4,
-  supportsThread: true,
-  supportsMentions: false,
-};
 
 /** AT Protocol access JWTs carry the account DID in the standard `sub` claim. */
 function extractDidFromAccessJwt(accessJwt: string): string {
@@ -44,7 +37,7 @@ function toExternalId(ref: BlueskyPostRef): string {
  */
 @Injectable()
 export class BlueskyAdapter implements NetworkAdapter {
-  readonly capabilities = CAPABILITIES;
+  readonly capabilities = NETWORK_CAPABILITIES.BLUESKY;
   readonly requiresRedirect = false;
 
   private readonly client: BlueskyApiClient;

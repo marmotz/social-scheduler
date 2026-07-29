@@ -8,19 +8,12 @@ import type {
   NetworkAdapterPostTargetItem,
   NetworkAdapterRefreshResult,
   NetworkAdapterUser,
-  NetworkCapabilities,
   PublishError,
 } from '@sonskay/shared';
+import { NETWORK_CAPABILITIES } from '@sonskay/shared';
 import { createHash } from 'node:crypto';
 import { AppConfigService } from '../../config/app-config.service.js';
 import { TwitterApiClient, TwitterApiError } from './twitter-api-client.js';
-
-const CAPABILITIES: NetworkCapabilities = {
-  maxChars: 280,
-  maxImages: 4,
-  supportsThread: true,
-  supportsMentions: false,
-};
 
 /**
  * Implements `NetworkAdapter` for X/Twitter using OAuth2 with PKCE (S256).
@@ -34,7 +27,7 @@ const CAPABILITIES: NetworkCapabilities = {
  */
 @Injectable()
 export class TwitterAdapter implements NetworkAdapter {
-  readonly capabilities = CAPABILITIES;
+  readonly capabilities = NETWORK_CAPABILITIES.TWITTER;
   readonly requiresRedirect = true;
 
   private readonly client: TwitterApiClient;
