@@ -4,15 +4,17 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { AuthModule } from './auth/auth.module.js';
 import { AppConfigModule } from './config/app-config.module.js';
+import { EncryptionModule } from './crypto/encryption.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 import { AppLoggerInterceptor } from './shared/app-logger/app-logger.interceptor.js';
 import { AppLoggerService } from './shared/app-logger/app-logger.service.js';
 import { IpMiddleware } from './shared/middlewares/ip.middleware.js';
 import { RequestIdMiddleware } from './shared/middlewares/request-id.middleware.js';
 import { SessionMiddleware } from './shared/middlewares/session.middleware.js';
+import { SocialAccountsModule } from './social-accounts/social-accounts.module.js';
 
 @Module({
-  imports: [AppConfigModule, PrismaModule, AuthModule],
+  imports: [AppConfigModule, EncryptionModule, PrismaModule, AuthModule, SocialAccountsModule],
   controllers: [AppController],
   providers: [
     AppService,

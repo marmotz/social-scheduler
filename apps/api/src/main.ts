@@ -15,6 +15,7 @@ import { IpMiddleware } from './shared/middlewares/ip.middleware.js';
 import { RequestIdMiddleware } from './shared/middlewares/request-id.middleware.js';
 import { SessionMiddleware } from './shared/middlewares/session.middleware.js';
 import type { AppRequest } from './shared/request/app-request.interface.js';
+import { SocialAccountsService } from './social-accounts/social-accounts.service.js';
 import { createContextFactory } from './trpc/context.js';
 import { createAppRouter } from './trpc/trpc.router.js';
 
@@ -43,6 +44,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AppLoggerExceptionFilter(app.get(AppLoggerService)));
 
   const authService = app.get(AuthService);
+  const socialAccountsService = app.get(SocialAccountsService);
   const appLoggerService = app.get(AppLoggerService);
 
   // /trpc is mounted as raw Express middleware (see below), so it never goes through
@@ -65,7 +67,7 @@ async function bootstrap() {
   app.use(
     '/trpc',
     createExpressMiddleware({
-      router: createAppRouter(authService, config),
+      router: createAppRouter(authService, config, socialAccountsService),
       createContext: createContextFactory(authService),
     })
   );

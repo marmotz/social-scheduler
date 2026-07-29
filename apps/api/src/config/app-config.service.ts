@@ -46,4 +46,25 @@ export class AppConfigService {
   get webUrl(): string {
     return this.configService.get('WEB_URL', { infer: true });
   }
+
+  get twitterClientId(): string | undefined {
+    return this.configService.get('TWITTER_CLIENT_ID', { infer: true });
+  }
+
+  get twitterClientSecret(): string | undefined {
+    return this.configService.get('TWITTER_CLIENT_SECRET', { infer: true });
+  }
+
+  get twitterApiBaseUrl(): string {
+    return this.configService.get('TWITTER_API_BASE_URL', { infer: true });
+  }
+
+  /** Host of the interactive OAuth2 authorization page — distinct from `twitterApiBaseUrl` (the REST API host). */
+  get twitterAuthorizeBaseUrl(): string {
+    return this.configService.get('TWITTER_AUTHORIZE_BASE_URL', { infer: true });
+  }
+
+  get blueskyServiceUrl(): string {
+    return this.configService.get('BLUESKY_SERVICE_URL', { infer: true });
+  }
 }

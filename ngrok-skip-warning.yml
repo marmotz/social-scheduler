@@ -1,0 +1,9 @@
+# ngrok Traffic Policy: injects the header that bypasses ngrok's free-tier browser-warning
+# interstitial, so non-browser clients reach the backend directly instead of getting
+# the "Visit Site" HTML page.
+on_http_request:
+  - actions:
+      - type: add-headers
+        config:
+          headers:
+            ngrok-skip-browser-warning: 'true'

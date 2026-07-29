@@ -36,6 +36,12 @@ function RootLayout() {
               >
                 Dashboard
               </Link>
+              <Link
+                to="/social-accounts"
+                className="text-sm"
+              >
+                Social accounts
+              </Link>
               <span className="text-sm text-muted-foreground">{user.email}</span>
               <Button
                 variant="outline"

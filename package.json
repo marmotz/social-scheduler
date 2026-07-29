@@ -17,7 +17,8 @@
     "test": "bun --filter @sonskay/shared build && bun --filter '*' test",
     "wb": "bun --cwd=apps/api",
     "wf": "bun --cwd=apps/web",
-    "ws": "bun --cwd=packages/shared"
+    "ws": "bun --cwd=packages/shared",
+    "ngrok": "ngrok http 3003 --traffic-policy-file ngrok-skip-warning.yml"
   },
   "devDependencies": {
     "lefthook": "^2.1.10",

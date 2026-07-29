@@ -1,6 +1,6 @@
 # Backend — chiffrement applicatif des tokens OAuth (AES-256-GCM)
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : backend
 **Issue** : [marmotz/sonskay#14](https://github.com/marmotz/sonskay/issues/14)
 

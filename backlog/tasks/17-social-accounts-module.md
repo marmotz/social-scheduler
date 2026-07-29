@@ -1,6 +1,6 @@
 # Backend — module social-accounts (connexion et gestion des comptes réseaux)
 
-**Statut** : à faire
+**Statut** : fait
 **Type** : backend
 **Issue** : [marmotz/sonskay#17](https://github.com/marmotz/sonskay/issues/17)
 

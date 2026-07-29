@@ -22,3 +22,11 @@ Référence : [../features/mvp/technical.md §Programmation & publication](../fe
 
 [19-posts-module.md](19-posts-module.md),
 [17-social-accounts-module.md](17-social-accounts-module.md).
+
+## Note
+
+`SocialAccountsService.refreshAccountToken(accountId)` existe déjà (implémenté avec
+#17) et gère les transitions de statut (`CONNECTED`/`EXPIRED`/`REVOKED`), mais n'a
+aucun appelant : à invoquer ici quand `NetworkAdapter.publish`/`mapError` renvoie
+`token_expired` sur un `PostTarget`, avant de retenter (si l'adapter supporte le
+refresh) ou de marquer l'échec définitif (sinon).
